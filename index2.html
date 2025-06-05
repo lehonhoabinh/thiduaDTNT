@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thi đua lớp học</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 16px;
+      background: linear-gradient(to bottom right, #d0f0c0, #f8f8f8);
+      max-width: 500px;
+      margin: auto;
+    }
+    h2, h4 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+    }
+    select, input[type="date"], input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .section {
+      background: white;
+      padding: 12px;
+      margin-top: 16px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Thi đua lớp học</h2>
+  <div class="section" id="loginSection">
+    <label for="username">Tên đăng nhập:</label>
+    <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" placeholder="Nhập mật khẩu">
+    <button onclick="login()">🔐 Đăng nhập</button>
+  </div>
+
+  <div class="section" id="mainApp" style="display:none;">
+    <!-- Phần giao diện ghi nhận như cũ sẽ hiển thị tại đây sau khi đăng nhập thành công -->
+    <p>✅ Đăng nhập thành công! Các chức năng đã mở khóa.</p>
+  </div>
+
+  <script>
+    const USERS = [
+      { user: "admin", pass: "123456" },
+      { user: "gv1", pass: "thi_dua" }
+    ];
+
+    function login() {
+      const u = document.getElementById("username").value.trim();
+      const p = document.getElementById("password").value;
+      const ok = USERS.some(acc => acc.user === u && acc.pass === p);
+      if (ok) {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("mainApp").style.display = "block";
+        loadApp();
+      } else {
+        alert("Sai tên đăng nhập hoặc mật khẩu!");
+      }
+    }
+
+    function loadApp() {
+      // Đây là nơi bạn chèn phần HTML giao diện chính đã xây dựng (form nhập điểm, nút lưu, xuất Excel...)
+    }
+  </script>
+</body>
+</html>
